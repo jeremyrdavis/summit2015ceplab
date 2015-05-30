@@ -1,0 +1,13 @@
+package com.redhat.summit2015.ceplab
+
+import com.redhat.summit2015.ceplab.model.Account;
+import com.redhat.summit2015.ceplab.model.AccountStatus;
+import com.redhat.summit2015.ceplab.model.Transaction;
+
+rule "Test Rule"
+    when
+        $transaction : Transaction()
+    then
+        System.out.println("transaction");
+        retract( $transaction );
+end 
