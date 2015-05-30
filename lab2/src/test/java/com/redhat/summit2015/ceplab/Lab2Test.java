@@ -1,10 +1,12 @@
 package com.redhat.summit2015.ceplab;
 
 import java.math.BigDecimal;
+import java.util.concurrent.TimeUnit;
 
 import junit.framework.TestCase;
 
 import org.drools.core.ClockType;
+import org.drools.core.time.SessionPseudoClock;
 import org.junit.Before;
 import org.junit.Test;
 import org.kie.api.KieServices;
@@ -14,9 +16,11 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.KieSessionConfiguration;
 import org.kie.api.runtime.conf.ClockTypeOption;
+import org.kie.api.time.SessionClock;
 
 import com.redhat.summit2015.ceplab.model.Account;
 import com.redhat.summit2015.ceplab.model.Transaction;
+import com.redhat.summit2015.ceplab.model.TransactionStatus;
 
 /**
  * Unit test for simple App.
@@ -49,6 +53,9 @@ public class Lab2Test extends TestCase {
     public void testSomething(){
         assertNotNull("kSession should be instantiated", kSession);
         
+        SessionPseudoClock clock = kSession.getSessionClock();
+        assertNotNull("SessionClock should not be null", clock);
+
         Account fromAccount = new Account();
         Account toAccount = new Account();
         
@@ -56,9 +63,15 @@ public class Lab2Test extends TestCase {
         Transaction transaction2 = new Transaction(fromAccount, toAccount, BigDecimal.valueOf(200));
 
         kSession.insert(transaction1);
+        clock.advanceTime(5, TimeUnit.SECONDS);
+        
+        kSession.insert(transaction2);
+        clock.advanceTime(5, TimeUnit.SECONDS);
+
         kSession.fireAllRules();
         
-        fail("not implemented");
+        assertSame("the second transaction should be marked as a duplicate", TransactionStatus.DUPLICATE, transaction2.getStatus());
+        System.out.println(transaction2);
     }
 
 }

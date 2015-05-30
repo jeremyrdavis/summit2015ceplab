@@ -3,11 +3,14 @@ package com.redhat.summit2015.ceplab
 import com.redhat.summit2015.ceplab.model.Account;
 import com.redhat.summit2015.ceplab.model.AccountStatus;
 import com.redhat.summit2015.ceplab.model.Transaction;
+import com.redhat.summit2015.ceplab.model.TransactionStatus;
 
 rule "Test Rule"
     when
-        $transaction : Transaction()
+        $transaction : Transaction( $fromAccount : fromAccount, $toAccount : toAccount, $amount : amount)
+        $transaction2 : Transaction( fromAccount == $fromAccount, toAccount == $toAccount, amount == $amount)
     then
         System.out.println("transaction");
+        $transaction2.setStatus( TransactionStatus.DUPLICATE );
         retract( $transaction );
 end 
