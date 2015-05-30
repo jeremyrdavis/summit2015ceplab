@@ -1,0 +1,18 @@
+package com.redhat.summit2015.ceplab
+ 
+import java.math.BigDecimal;
+
+import com.redhat.summit2015.ceplab.model.Account;
+import com.redhat.summit2015.ceplab.model.AccountStatus;
+
+/*
+    When there is an account with a $0 dollar balance set the status to AccountStatus.BLOCKED
+*/
+rule "Zero Balance"
+    when
+        $account : Account( balance <= BigDecimal.ZERO && status != AccountStatus.BLOCKED )
+    then
+        System.out.println("blocking account");
+        $account.setStatus( AccountStatus.BLOCKED );
+        update( $account );
+end
