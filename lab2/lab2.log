@@ -1,0 +1,23 @@
+<object-stream>
+<org.drools.core.audit.WorkingMemoryLog>
+  <version>6.1</version>
+  <events>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>1</factId>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@6d2c4b09[id=1433065669521960000,from=1433065669521744000,to=1433065669521751000,amount=200,status=SCHEDULED]</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>3</type>
+      <factId>1</factId>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@6d2c4b09[id=1433065669521960000,from=1433065669521744000,to=1433065669521751000,amount=200,status=SCHEDULED]</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>2</factId>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@558e3c98[id=1433065669521757000,from=1433065669521744000,to=1433065669521751000,amount=300,status=SCHEDULED]</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+  </events>
+  <engine>PHREAK</engine>
+</org.drools.core.audit.WorkingMemoryLog>
+</object-stream>

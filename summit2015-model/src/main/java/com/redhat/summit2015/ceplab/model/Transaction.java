@@ -6,6 +6,8 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class Transaction {
 	
+	private String id;
+	
 	private TransactionStatus status;
 	
 	private Account fromAccount;
@@ -22,11 +24,14 @@ public class Transaction {
 		this.fromAccount = fromAccount;
 		this.toAccount = toAccount;
 		this.amount = amount;
+		this.status = TransactionStatus.SCHEDULED;
+		this.id = String.valueOf(System.nanoTime());
 	}
 	
 	@Override
 	public String toString(){
-		return new ToStringBuilder(this).append("from", fromAccount.getId())
+		return new ToStringBuilder(this).append("id", id)
+				.append("from", fromAccount.getId())
 				.append("to", toAccount.getId())
 				.append("amount", amount)
 				.append("status", status).toString();
@@ -41,6 +46,7 @@ public class Transaction {
 		result = prime * result + ((amount == null) ? 0 : amount.hashCode());
 		result = prime * result
 				+ ((fromAccount == null) ? 0 : fromAccount.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result
 				+ ((toAccount == null) ? 0 : toAccount.hashCode());
@@ -66,6 +72,11 @@ public class Transaction {
 				return false;
 		} else if (!fromAccount.equals(other.fromAccount))
 			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
 		if (status != other.status)
 			return false;
 		if (toAccount == null) {
@@ -76,12 +87,19 @@ public class Transaction {
 		return true;
 	}
 
-	
 	//--------------------------------------------------------------------------
 	//	generated getters and setters
 	//--------------------------------------------------------------------------
 	public TransactionStatus getStatus() {
 		return status;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public void setStatus(TransactionStatus status) {

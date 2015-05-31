@@ -5,12 +5,32 @@ import com.redhat.summit2015.ceplab.model.AccountStatus;
 import com.redhat.summit2015.ceplab.model.Transaction;
 import com.redhat.summit2015.ceplab.model.TransactionStatus;
 
-rule "Test Rule"
-    when
-        $transaction : Transaction( $fromAccount : fromAccount, $toAccount : toAccount, $amount : amount)
-        $transaction2 : Transaction( fromAccount == $fromAccount, toAccount == $toAccount, amount == $amount)
-    then
-        System.out.println("transaction");
-        $transaction2.setStatus( TransactionStatus.DUPLICATE );
-        retract( $transaction );
+declare Transaction
+    @role( event )
 end 
+
+/*
+rule "Test Rule"
+    no-loop true
+    when
+        $t1 : Transaction( $a : amount ) from entry-point "Transfers"
+        $t2 : Transaction( ) from entry-point "Transfers"
+    then
+        System.out.println("then: " + $t1);
+        System.out.println("then: " + $t2);
+        System.out.println("$a: " + $a );
+        modify($t2){
+            setStatus( TransactionStatus.DUPLICATE );
+        }
+end 
+rule "Dummy Rule" dialect "mvel"
+    no-loop true
+    when 
+        $t1 : Transaction( ) from entry-point Transfers
+        $t2 : Transaction( this != $t1, this after [0s, 10s] $t1 ) from entry-point Transfers
+    then
+        $t2.setStatus( TransactionStatus.DUPLICATE );
+        System.out.println("2 transactions with the same amount :\n" + $t1 + "\n" + $t2);
+end
+*/
+

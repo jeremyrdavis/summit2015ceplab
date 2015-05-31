@@ -1,0 +1,20 @@
+package com.redhat.summit2015.ceplab
+
+import com.redhat.summit2015.ceplab.model.Account;
+import com.redhat.summit2015.ceplab.model.AccountStatus;
+import com.redhat.summit2015.ceplab.model.Transaction;
+import com.redhat.summit2015.ceplab.model.TransactionStatus;
+
+declare Transaction
+    @role( event )
+end
+
+rule "Duplicates rule"
+    no-loop
+    when
+        $t1 : Transaction( $fromAccount : fromAccount )  from entry-point Transfers
+        $t2 : Transaction( this != $t1, fromAccount == $fromAccount, this after [0s, 15s] $t1 )  from entry-point Transfers
+    then
+        System.out.println("matched");
+        $t2.setStatus( TransactionStatus.DUPLICATE );
+end
