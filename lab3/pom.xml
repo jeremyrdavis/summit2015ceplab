@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.redhat.summit2015.ceplab</groupId>
+  <artifactId>lab3</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+ 
+  <name>Red Hat Summit 2015 Complex Event Processing with JBoss BRMS</name>
+  <url>http://www.redhat.com</url>
+ 
+  <properties>
+    <brms-version>6.2.0.Final-redhat-4</brms-version>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-api</artifactId>
+      <version>${brms-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-internal</artifactId>
+      <version>${brms-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.drools</groupId>
+      <artifactId>drools-core</artifactId>
+      <version>${brms-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.drools</groupId>
+      <artifactId>drools-compiler</artifactId>
+      <version>${brms-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+        <version>4.11</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.6.0.redhat-4</version>
+    </dependency>
+    <dependency>
+        <groupId>com.redhat.summit2015.ceplab</groupId>
+        <artifactId>ceplab-model</artifactId>
+        <version>[0.0.1-SNAPSHOT,)</version>
+    </dependency>
+  </dependencies>
+</project>

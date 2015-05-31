@@ -1,0 +1,140 @@
+<object-stream>
+<org.drools.core.audit.WorkingMemoryLog>
+  <version>6.1</version>
+  <events/>
+  <engine>PHREAK</engine>
+</org.drools.core.audit.WorkingMemoryLog>
+<org.drools.core.audit.WorkingMemoryLog>
+  <version>6.1</version>
+  <events>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>1</factId>
+      <objectToString>com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=ACTIVE,balance=10000]</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+  </events>
+  <engine>PHREAK</engine>
+</org.drools.core.audit.WorkingMemoryLog>
+<org.drools.core.audit.WorkingMemoryLog>
+  <version>6.1</version>
+  <events>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>2</factId>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@6adda258[id=1433069370904536000,from=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=ACTIVE,balance=10000],to=&lt;null&gt;,amount=100,status=SCHEDULED]</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>3</factId>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@88dfd83[id=1433069370904542000,from=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=ACTIVE,balance=10000],to=&lt;null&gt;,amount=100,status=SCHEDULED]</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>4</factId>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@21fea7d8[id=1433069370904544000,from=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=ACTIVE,balance=10000],to=&lt;null&gt;,amount=100,status=SCHEDULED]</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+  </events>
+  <engine>PHREAK</engine>
+</org.drools.core.audit.WorkingMemoryLog>
+<org.drools.core.audit.WorkingMemoryLog>
+  <version>6.1</version>
+  <events>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>Dummy rule [1, 2, 4, 3]</activationId>
+      <rule>Dummy rule</rule>
+      <declarations>$a=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=ACTIVE,balance=10000]</declarations>
+      <factHandleIds>4,1,2,3</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>Dummy rule [1, 3, 4, 2]</activationId>
+      <rule>Dummy rule</rule>
+      <declarations>$a=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=ACTIVE,balance=10000]</declarations>
+      <factHandleIds>4,1,3,2</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>Dummy rule [1, 4, 2, 3]</activationId>
+      <rule>Dummy rule</rule>
+      <declarations>$a=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=ACTIVE,balance=10000]</declarations>
+      <factHandleIds>4,1,2,3</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>Dummy rule [1, 4, 3, 2]</activationId>
+      <rule>Dummy rule</rule>
+      <declarations>$a=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=ACTIVE,balance=10000]</declarations>
+      <factHandleIds>4,1,3,2</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>Dummy rule [1, 2, 3, 4]</activationId>
+      <rule>Dummy rule</rule>
+      <declarations>$a=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=ACTIVE,balance=10000]</declarations>
+      <factHandleIds>4,1,2,3</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>Dummy rule [1, 3, 2, 4]</activationId>
+      <rule>Dummy rule</rule>
+      <declarations>$a=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=ACTIVE,balance=10000]</declarations>
+      <factHandleIds>4,1,3,2</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>Dummy rule [1, 2, 4, 3]</activationId>
+      <rule>Dummy rule</rule>
+      <declarations>$a=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=ACTIVE,balance=10000]</declarations>
+      <factHandleIds>4,1,2,3</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>2</type>
+      <factId>1</factId>
+      <objectToString>com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=BLOCKED,balance=10000]</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>Dummy rule [1, 2, 4, 3]</activationId>
+      <rule>Dummy rule</rule>
+      <declarations>$a=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=BLOCKED,balance=10000]</declarations>
+      <factHandleIds>4,1,2,3</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>5</type>
+      <activationId>Dummy rule [1, 4, 2, 3]</activationId>
+      <rule>Dummy rule</rule>
+      <declarations>$a=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=BLOCKED,balance=10000]</declarations>
+      <factHandleIds>4,1,2,3</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>5</type>
+      <activationId>Dummy rule [1, 4, 3, 2]</activationId>
+      <rule>Dummy rule</rule>
+      <declarations>$a=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=BLOCKED,balance=10000]</declarations>
+      <factHandleIds>4,1,3,2</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>5</type>
+      <activationId>Dummy rule [1, 3, 2, 4]</activationId>
+      <rule>Dummy rule</rule>
+      <declarations>$a=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=BLOCKED,balance=10000]</declarations>
+      <factHandleIds>4,1,3,2</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>5</type>
+      <activationId>Dummy rule [1, 3, 4, 2]</activationId>
+      <rule>Dummy rule</rule>
+      <declarations>$a=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=BLOCKED,balance=10000]</declarations>
+      <factHandleIds>4,1,3,2</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>5</type>
+      <activationId>Dummy rule [1, 2, 3, 4]</activationId>
+      <rule>Dummy rule</rule>
+      <declarations>$a=com.redhat.summit2015.ceplab.model.Account@bd43cab[id=1433069370904513000,status=BLOCKED,balance=10000]</declarations>
+      <factHandleIds>4,1,2,3</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+  </events>
+  <engine>PHREAK</engine>
+</org.drools.core.audit.WorkingMemoryLog>

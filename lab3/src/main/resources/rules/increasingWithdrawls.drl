@@ -1,0 +1,23 @@
+package com.redhat.summit2015.ceplab
+ 
+import com.redhat.summit2015.ceplab.model.Account;
+import com.redhat.summit2015.ceplab.model.AccountStatus;
+import com.redhat.summit2015.ceplab.model.Transaction;
+
+declare Transaction
+    @role(event)
+    @propertyReactive
+end
+
+rule "Dummy rule" 
+    when
+        $a : Account( $id : id, status != AccountStatus.BLOCKED)
+        $t1 : Transaction( fromAccount == $a ) from entry-point "Withdrawls"
+        $t2 : Transaction( this != $t1, fromAccount == $a, this after [0, 3m] $t1 ) from entry-point "Withdrawls"
+       $t3 : Transaction( this != $t1, this != $t2, fromAccount == $a, this after [0, 3m] $t2 ) from entry-point "Withdrawls"
+    then
+        modify($a){
+            setStatus( AccountStatus.BLOCKED );
+        }
+        System.out.println("hooray");
+end

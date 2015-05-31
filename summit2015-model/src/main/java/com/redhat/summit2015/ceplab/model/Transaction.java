@@ -28,11 +28,19 @@ public class Transaction {
 		this.id = String.valueOf(System.nanoTime());
 	}
 	
+	public Transaction(Account fromAccount, BigDecimal amount){
+		super();
+		this.fromAccount = fromAccount;
+		this.amount = amount;
+		this.status = TransactionStatus.SCHEDULED;
+		this.id = String.valueOf(System.nanoTime());
+	}
+	
 	@Override
 	public String toString(){
 		return new ToStringBuilder(this).append("id", id)
-				.append("from", fromAccount.getId())
-				.append("to", toAccount.getId())
+				.append("from", fromAccount)
+				.append("to", toAccount)
 				.append("amount", amount)
 				.append("status", status).toString();
 	}

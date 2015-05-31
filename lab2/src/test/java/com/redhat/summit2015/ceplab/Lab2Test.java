@@ -98,6 +98,7 @@ public class Lab2Test extends TestCase {
         entryPoint.insert(new Transaction(fromAccount, toAccount, BigDecimal.valueOf(200)));
         
         clock.advanceTime(30, TimeUnit.SECONDS);
+        
         entryPoint.insert(t2);
         kSession.fireAllRules();
         

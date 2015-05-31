@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.redhat.summit2015.ceplab</groupId>
   <artifactId>ceplab-model</artifactId>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.4-SNAPSHOT</version>
   <name>CEP Hands on Lab Domain Model</name>
   <description>Domain model for CEP lab</description>
   <dependencies>
