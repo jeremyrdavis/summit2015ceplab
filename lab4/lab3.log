@@ -1,0 +1,37 @@
+<object-stream>
+<org.drools.core.audit.WorkingMemoryLog>
+  <version>6.1</version>
+  <events/>
+  <engine>PHREAK</engine>
+</org.drools.core.audit.WorkingMemoryLog>
+<org.drools.core.audit.WorkingMemoryLog>
+  <version>6.1</version>
+  <events>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>1</factId>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@6e1641c4[id=1433151913205903000,from=com.redhat.summit2015.ceplab.model.Account@52b7c548[id=1433151913205865000,status=ACTIVE,balance=5000],to=&lt;null&gt;,amount=10,status=SCHEDULED]</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>2</factId>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@747e1fd4[id=1433151913205911000,from=com.redhat.summit2015.ceplab.model.Account@52b7c548[id=1433151913205865000,status=ACTIVE,balance=5000],to=&lt;null&gt;,amount=10,status=SCHEDULED]</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>3</factId>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@45bd30c[id=1433151913205915000,from=com.redhat.summit2015.ceplab.model.Account@52b7c548[id=1433151913205865000,status=ACTIVE,balance=5000],to=&lt;null&gt;,amount=10,status=SCHEDULED]</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>4</factId>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@287cbb10[id=1433151913205918000,from=com.redhat.summit2015.ceplab.model.Account@52b7c548[id=1433151913205865000,status=ACTIVE,balance=5000],to=&lt;null&gt;,amount=10,status=SCHEDULED]</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>5</factId>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@14dd2c34[id=1433151913205924000,from=com.redhat.summit2015.ceplab.model.Account@52b7c548[id=1433151913205865000,status=ACTIVE,balance=5000],to=&lt;null&gt;,amount=100,status=SCHEDULED]</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+  </events>
+  <engine>PHREAK</engine>
+</org.drools.core.audit.WorkingMemoryLog>
