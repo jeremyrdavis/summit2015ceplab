@@ -21,7 +21,7 @@ import com.redhat.summit2015.ceplab.model.TransactionStatus;
 /**
  * Unit test for simple App.
  */
-public class AppTest extends TestCase {
+public class Lab4Test extends TestCase {
 
     KieSession kSession;
     EntryPoint entryPoint;
