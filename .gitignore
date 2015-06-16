@@ -1,0 +1,21 @@
+# Eclipse stuff
+.metadata/
+
+# Idea stuff
+.idea
+
+# Maven stuff
+**target/
+
+# OS stuff
+RemoteSystemsTempFiles/
+
+# Project specific stuff
+summit2015/
+cep_lab/
+ceplab/
+drools-example/
+drools64project/
+jboss-kitchensink-rf/
+
+
