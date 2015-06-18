@@ -50,5 +50,11 @@
         <artifactId>ceplab-model</artifactId>
         <version>[0.0.1-SNAPSHOT,)</version>
     </dependency>
+    <dependency>
+        <groupId>com.redhat.summit2015.ceplab</groupId>
+        <scope>test</scope>
+        <artifactId>ceplab-tests</artifactId>
+        <version>[0.0.1-SNAPSHOT,)</version>
+    </dependency>
   </dependencies>
 </project>

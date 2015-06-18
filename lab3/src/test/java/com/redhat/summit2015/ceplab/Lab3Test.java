@@ -3,18 +3,13 @@ package com.redhat.summit2015.ceplab;
 import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;
 
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
-import org.drools.core.time.SessionPseudoClock;
 import org.junit.Before;
 import org.junit.Test;
-import org.kie.api.KieServices;
 import org.kie.api.definition.type.FactType;
-import org.kie.api.runtime.KieContainer;
-import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.EntryPoint;
 import org.kie.api.runtime.rule.FactHandle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.redhat.summit2015.ceplab.model.Account;
 import com.redhat.summit2015.ceplab.model.AccountStatus;
@@ -24,30 +19,22 @@ import com.redhat.summit2015.ceplab.model.Transaction;
  * Unit test for simple App.
  * @see org.kie.api.KieServices, org.kie.api.runtime.rule.EntryPoint
  */
-public class Lab3Test extends TestCase {
+public class Lab3Test extends BaseCEPTestCase {
 
-	KieSession kSession;
-	
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(Lab3Test.class);
+
 	/**
 	 * An EntryPoint is
 	 * We will only use one EntryPoint in this example.
 	 */
 	EntryPoint entryPoint;
 	
-    SessionPseudoClock clock;
-
-
 	@Before
 	public void setUp() {
-		// load up the knowledge base
-		KieServices ks = KieServices.Factory.get();
-		KieContainer kContainer = ks.getKieClasspathContainer();
-		kSession = kContainer.newKieSession("ksession1");
-		assertNotNull(
-				"kSession should be instantiated and set to member variable",
-				kSession);
-        entryPoint = kSession.getEntryPoint("Withdrawls");
-        clock = kSession.getSessionClock();
+		
+		setDrls("rules/increasingWithdrawls.drl");
+		super.setUp();
 	}
 
 	@Test
