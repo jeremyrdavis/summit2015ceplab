@@ -5,17 +5,17 @@
     <org.drools.core.audit.event.ObjectLogEvent>
       <type>1</type>
       <factId>1</factId>
-      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@6d2c4b09[id=1433065669521960000,from=1433065669521744000,to=1433065669521751000,amount=200,status=SCHEDULED]</objectToString>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@8ecf90a[id=1434600596038984000,from=com.redhat.summit2015.ceplab.model.Account@583d2891[id=1434600596038581000,status=ACTIVE,balance=10000],to=com.redhat.summit2015.ceplab.model.Account@71955e74[id=1434600596038592000,status=ACTIVE,balance=50000],amount=200,status=SCHEDULED]</objectToString>
     </org.drools.core.audit.event.ObjectLogEvent>
     <org.drools.core.audit.event.ObjectLogEvent>
       <type>3</type>
       <factId>1</factId>
-      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@6d2c4b09[id=1433065669521960000,from=1433065669521744000,to=1433065669521751000,amount=200,status=SCHEDULED]</objectToString>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@8ecf90a[id=1434600596038984000,from=com.redhat.summit2015.ceplab.model.Account@583d2891[id=1434600596038581000,status=ACTIVE,balance=10000],to=com.redhat.summit2015.ceplab.model.Account@71955e74[id=1434600596038592000,status=ACTIVE,balance=50000],amount=200,status=SCHEDULED]</objectToString>
     </org.drools.core.audit.event.ObjectLogEvent>
     <org.drools.core.audit.event.ObjectLogEvent>
       <type>1</type>
       <factId>2</factId>
-      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@558e3c98[id=1433065669521757000,from=1433065669521744000,to=1433065669521751000,amount=300,status=SCHEDULED]</objectToString>
+      <objectToString>com.redhat.summit2015.ceplab.model.Transaction@56c4bee[id=1434600596038601000,from=com.redhat.summit2015.ceplab.model.Account@583d2891[id=1434600596038581000,status=ACTIVE,balance=10000],to=com.redhat.summit2015.ceplab.model.Account@71955e74[id=1434600596038592000,status=ACTIVE,balance=50000],amount=300,status=SCHEDULED]</objectToString>
     </org.drools.core.audit.event.ObjectLogEvent>
   </events>
   <engine>PHREAK</engine>
