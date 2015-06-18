@@ -4,7 +4,7 @@
  
   <groupId>com.redhat.summit2015.ceplab</groupId>
   <artifactId>lab4</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
  
   <name>Red Hat Summit 2015 Complex Event Processing with JBoss BRMS</name>
@@ -49,6 +49,12 @@
       <groupId>com.redhat.summit2015.ceplab</groupId>
       <artifactId>ceplab-model</artifactId>
       <version>[0.0.1-SNAPSHOT,)</version>
+    </dependency>
+    <dependency>
+        <groupId>com.redhat.summit2015.ceplab</groupId>
+        <scope>test</scope>
+        <artifactId>ceplab-tests</artifactId>
+        <version>[0.0.1-SNAPSHOT,)</version>
     </dependency>
   </dependencies>
 </project>

@@ -35,6 +35,8 @@ public class Lab3Test extends BaseCEPTestCase {
 		
 		setDrls("rules/increasingWithdrawls.drl");
 		super.setUp();
+		//TODO explain how to create EntryPoints
+		entryPoint = kSession.getEntryPoint("Withdrawls");
 	}
 
 	@Test
