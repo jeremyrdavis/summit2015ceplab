@@ -22,27 +22,17 @@ import com.redhat.summit2015.ceplab.model.TransactionStatus;
 /**
  * Unit test for simple App.
  */
-public class Lab5Test extends TestCase {
+public class Lab5Test extends BaseCEPTestCase{
 
-    KieSession kSession;
     EntryPoint entryPoint;
-    SessionPseudoClock clock;
     
     @Before
     public void setUp(){
         // load up the knowledge base
-        KieServices ks = KieServices.Factory.get();
-        KieContainer kContainer = ks.getKieClasspathContainer();
-
-        kSession = kContainer.newKieSession("ksession1");
-        assertNotNull("kSession should be instantiated and set to member variable", kSession);
-        
-        entryPoint = kSession.getEntryPoint("CreditCard");
-        assertNotNull("EntryPoint shouldn't be null", entryPoint);
-        
-        clock = kSession.getSessionClock();
-        assertNotNull("SessionClock shouldn't be null", clock);
-        
+		setDrls("rules/lab5rules.drl");
+		super.setUp();
+		//TODO explain how to create EntryPoints
+		entryPoint = kSession.getEntryPoint("CreditCard");
     }
 
     @After
