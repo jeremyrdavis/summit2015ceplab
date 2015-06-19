@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Before;
 import org.junit.Test;
 import org.kie.api.definition.type.FactType;
-import org.kie.api.runtime.rule.EntryPoint;
 import org.kie.api.runtime.rule.FactHandle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,19 +23,11 @@ public class Lab3Test extends BaseCEPTestCase {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(Lab3Test.class);
 
-	/**
-	 * An EntryPoint is
-	 * We will only use one EntryPoint in this example.
-	 */
-	EntryPoint entryPoint;
-	
 	@Before
 	public void setUp() {
-		
 		setDrls("rules/increasingWithdrawls.drl");
+		setEntryPointName("Withdrawls");
 		super.setUp();
-		//TODO explain how to create EntryPoints
-		entryPoint = kSession.getEntryPoint("Withdrawls");
 	}
 
 	@Test

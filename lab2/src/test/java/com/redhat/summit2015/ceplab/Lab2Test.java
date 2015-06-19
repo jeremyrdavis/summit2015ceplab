@@ -27,6 +27,7 @@ public class Lab2Test extends BaseCEPTestCase {
 	@Override
 	public void setUp() {
 		setDrls("rules/transaction1.drl");
+		setEntryPointName("Transfers");
 		super.setUp();
 	}
 
@@ -36,7 +37,6 @@ public class Lab2Test extends BaseCEPTestCase {
 		// extra sanity check
 		assertNotNull("kSession should be instantiated", kSession);
 
-		EntryPoint entryPoint = kSession.getEntryPoint("Transfers");
 		assertNotNull("EntryPoint should not be null", entryPoint);
 
 		LOGGER.debug("basic setup okay");

@@ -22,6 +22,7 @@ import org.kie.api.conf.EventProcessingOption;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.conf.ClockTypeOption;
+import org.kie.api.runtime.rule.EntryPoint;
 import org.kie.internal.io.ResourceFactory;
 
 /**
@@ -44,12 +45,16 @@ public abstract class BaseCEPTestCase extends TestCase {
 	protected String kieSessionName = "kieSession";
 
 	protected String kieBaseName = "kieBase";
+	
+	protected String entryPointName;
 
 	protected String drls;
 
 	protected KieSession kSession;
 
 	protected SessionPseudoClock clock;
+	
+	protected EntryPoint entryPoint;
 
 	/**
 	 * Runs before each test methods (methods annotated with @Test) and sets up
@@ -108,6 +113,11 @@ public abstract class BaseCEPTestCase extends TestCase {
 		// we need to get the clock to manipulate in the test
 		clock = kSession.getSessionClock();
 		assertNotNull("SessionClock should not be null", clock);
+		
+		if(entryPointName != null && entryPointName.length() >= 1){
+			entryPoint = kSession.getEntryPoint(entryPointName);
+			assertNotNull("EntryPoint '" + entryPointName + "' should not be null");
+		}
 	}
 
 	@After
@@ -142,6 +152,14 @@ public abstract class BaseCEPTestCase extends TestCase {
 
 	public void setDrls(String drls) {
 		this.drls = drls;
+	}
+	
+	public String getEntryPointName() {
+		return entryPointName;
+	}
+
+	public void setEntryPointName(String entryPointName) {
+		this.entryPointName = entryPointName;
 	}
 
 	public KieSession getkSession() {

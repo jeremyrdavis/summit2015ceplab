@@ -23,15 +23,12 @@ import com.redhat.summit2015.ceplab.model.TransactionStatus;
  */
 public class Lab4Test extends BaseCEPTestCase{
 
-	EntryPoint entryPoint;
-	
 	@Before
 	public void setUp() {
 		
 		setDrls("rules/lab4rules.drl");
+		setEntryPointName("CreditCard");
 		super.setUp();
-		//TODO explain how to create EntryPoints
-		entryPoint = kSession.getEntryPoint("CreditCard");
 	}
     
     @Test
