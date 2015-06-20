@@ -25,16 +25,13 @@ public class Lab3Test extends BaseCEPTestCase {
 
 	@Before
 	public void setUp() {
-		setDrls("rules/increasingWithdrawls.drl");
+		setDrls("rules/lab3rules.drl");
 		setEntryPointName("Withdrawls");
 		super.setUp();
 	}
 
 	@Test
-	public void testSomething() throws InstantiationException, IllegalAccessException {
-		assertNotNull("kSession should be instantiated", kSession);
-        assertNotNull("EntryPoint should not be null", entryPoint);
-		
+	public void testFraudulentWithdrawls() throws InstantiationException, IllegalAccessException {
 		Account account = new Account(AccountStatus.ACTIVE, BigDecimal.valueOf(10000));
 		Transaction withdrawl1 = new Transaction(account, BigDecimal.valueOf(400));
 		Transaction withdrawl2 = new Transaction(account, BigDecimal.valueOf(400));
@@ -56,7 +53,7 @@ public class Lab3Test extends BaseCEPTestCase {
 
 		kSession.fireAllRules();
 
-		assertSame("Account should not be blocked", account.getStatus(), AccountStatus.BLOCKED);
+		assertSame("Account should be blocked", account.getStatus(), AccountStatus.BLOCKED);
 		
 	}
 	
@@ -69,6 +66,14 @@ public class Lab3Test extends BaseCEPTestCase {
 		Transaction withdrawl1 = new Transaction(account, BigDecimal.valueOf(100));
 		Transaction withdrawl2 = new Transaction(account, BigDecimal.valueOf(100));
 		Transaction withdrawl3 = new Transaction(account, BigDecimal.valueOf(100));
+		
+		FactType accountInfoFactType = kSession.getKieBase().getFactType("com.redhat.summit2015.ceplab", "AccountInfo");
+		Object accountInfo = accountInfoFactType.newInstance();
+		accountInfoFactType.set(accountInfo, "averageBalance",
+				BigDecimal.valueOf(10000));
+		accountInfoFactType.set(accountInfo, "id", account.getId());
+		FactHandle accountInfoHandle = kSession.insert(accountInfoFactType);
+		kSession.update(accountInfoHandle, accountInfo);		
 
 		kSession.insert(account);
 		entryPoint.insert(withdrawl1);

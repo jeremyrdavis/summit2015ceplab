@@ -14,14 +14,7 @@ end
 /*
     When there is an account with a $0 dollar balance set the status to AccountStatus.BLOCKED
 */
-rule "Zero Balance"
-    when
-        $account : Account( balance <= BigDecimal.ZERO && status != AccountStatus.BLOCKED )
-    then
-        System.out.println("blocking account");
-end
-
-rule "Transaction is suspect if the amount is more than twice the average of the last 4 Credit Card transactions"
+rule "Transaction is suspect if the amount is greater than the average Transaction amount for the past 30 days"
     dialect "mvel"
     when
         $average: Number() from accumulate (

@@ -1,0 +1,17 @@
+/*
+    When a credit card withdrawl is greater than the sum of the previous 4 withdrawls
+    it should be flagged as suspicious
+*/
+rule "Deny Transactions when the amount is more than twice the average of the last 4 transactions and the last 4 transactions were over $100"
+    dialect "mvel"
+    when
+        $sum: Number() from accumulate (
+            Transaction( amount >= 100, $amount: amount   ) over window:length ( 4 ) from entry-point Withdrawls,
+            sum($amount))
+        $transaction: Transaction( amount == 600  ) from entry-point Withdrawls
+    then
+        $transaction.setStatus(TransactionStatus.DENIED);
+        //System.out.println("Suspicious Transaction! This withdrawl of USD " + $transaction.getAmount() + " is more than $"  + $sum + ", the sum of the last 4 withdrawls");
+        System.out.println("sum :"  + $sum + ", the sum of the last 4 withdrawls");
+end
+

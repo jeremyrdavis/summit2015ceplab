@@ -6,13 +6,25 @@ import com.redhat.summit2015.ceplab.model.Account;
 import com.redhat.summit2015.ceplab.model.AccountStatus;
 
 /*
-    When there is an account with a $0 dollar balance set the status to AccountStatus.BLOCKED
+    When there is an Account with a $0 dollar balance terminate the Account
 */
 rule "Zero Balance"
     when
-        $account : Account( balance <= BigDecimal.ZERO && status != AccountStatus.BLOCKED )
+        $account : Account( balance <= BigDecimal.ZERO && status != AccountStatus.TERMINATED )
     then
-        System.out.println("blocking account");
+        System.out.println("terminating account " + $account);
+        $account.setStatus( AccountStatus.TERMINATED );
+        update( $account );
+end
+
+/*
+    When there is an Account with a balance between $1 and $100 set the status to AccountStatus.BLOCKED
+*/
+rule "Block Accounts with $100 or under balance"
+    when
+        $account : Account( status != AccountStatus.BLOCKED && (balance >= BigDecimal.ONE && balance <= BigDecimal.valueOf(100)) )
+    then
+        System.out.println("blocking account " + $account);
         $account.setStatus( AccountStatus.BLOCKED );
         update( $account );
 end

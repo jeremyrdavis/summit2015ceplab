@@ -10,21 +10,33 @@ import com.redhat.summit2015.ceplab.model.TransactionStatus;
 declare Transaction
     @role( event )
 end
-/*
-    When there is an account with a $0 dollar balance set the status to AccountStatus.BLOCKED
-*/
-rule "Zero Balance"
-    when
-        $account : Account( balance <= BigDecimal.ZERO && status != AccountStatus.BLOCKED )
-    then
-        System.out.println("blocking account");
-end
 
-rule "Transaction is suspect if the amount is more than twice the average of the last 4 Credit Card transactions"
+
+/*
+    When a credit card withdrawl is more than twice the average of the previous 4 withdrawls it 
+    should be denied
+*/
+rule "Deny Transactions when the amount is more than twice the average of the last 4 transactions"
     dialect "mvel"
     when
         $average: Number() from accumulate (
             Transaction( $amount: amount   ) over window:length ( 4 ) from entry-point CreditCard,
+            average($amount))
+        $transaction: Transaction( amount > ($average * 2)  ) from entry-point CreditCard
+    then
+        $transaction.setStatus(TransactionStatus.DENIED);
+        System.out.println("Transaction Denied! This Credit Card transaction amount of USD " + $transaction.getAmount() + " is more than twice the average amount ( USD "  + $average + ") of the last 4 Credit Card Transactions");
+end
+
+/*
+    When a credit card withdrawl is more than the average of the previous 4 withdrawls all of which
+    were over 100 it should be denied
+*/
+rule "Deny Transactions whena Transaction is more than the average of the previous 4 transactions and the previous 4 transactions amounts were greater than 100"
+    dialect "mvel"
+    when
+        $average: Number() from accumulate (
+            Transaction( amount >= 100, $amount: amount   ) over window:length ( 4 ) from entry-point CreditCard,
             average($amount))
         $transaction: Transaction( amount > $average  ) from entry-point CreditCard
     then
