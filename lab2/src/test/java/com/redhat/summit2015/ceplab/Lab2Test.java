@@ -77,26 +77,4 @@ public class Lab2Test extends BaseCEPTestCase {
 				TransactionStatus.DUPLICATE, t2.getStatus());
 	}
 	
-	@Test
-	public void test1DayRule(){
-		Account fromAccount = new Account(AccountStatus.ACTIVE,
-				BigDecimal.valueOf(10000));
-		Account toAccount = new Account(AccountStatus.ACTIVE,
-				BigDecimal.valueOf(50000));
-
-		Transaction t1 = new Transaction(fromAccount, toAccount,
-				BigDecimal.valueOf(200));
-		Transaction t2 = new Transaction(fromAccount, toAccount,
-				BigDecimal.valueOf(300));
-
-		entryPoint.insert(new Transaction(fromAccount, toAccount, BigDecimal
-				.valueOf(200)));
-		clock.advanceTime(1, TimeUnit.DAYS);
-		entryPoint.insert(t2);
-		kSession.fireAllRules();
-		assertSame(
-				"the second transaction should be marked as suspicious",
-				TransactionStatus.SUSPICIOUS, t2.getStatus());
-	}
-
 }
