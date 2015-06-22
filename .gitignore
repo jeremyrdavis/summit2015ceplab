@@ -5,7 +5,7 @@
 .idea
 
 # Maven stuff
-**target/
+target/
 
 # OS stuff
 RemoteSystemsTempFiles/
