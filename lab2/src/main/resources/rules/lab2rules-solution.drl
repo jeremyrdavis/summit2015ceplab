@@ -1,0 +1,39 @@
+package com.redhat.summit2015.ceplab
+
+import com.redhat.summit2015.ceplab.model.Account;
+import com.redhat.summit2015.ceplab.model.AccountStatus;
+import com.redhat.summit2015.ceplab.model.Transaction;
+import com.redhat.summit2015.ceplab.model.TransactionStatus;
+
+declare Transaction
+    @role( event )
+end
+
+/*
+    When there are 2 transfers from the same account within 15 seconds the second transaction 
+    should be marked as a duplicate.
+*/
+rule "Flag Duplicate Transfers"
+    no-loop
+    when
+        $t1 : Transaction( $fromAccount : fromAccount, $toAccount : toAccount )  from entry-point Transfers
+        $t2 : Transaction( this != $t1, fromAccount == $fromAccount, toAccount == $toAccount, this after [0s, 15s] $t1 )  
+            from entry-point Transfers
+    then
+        System.out.println("matched");
+        $t2.setStatus( TransactionStatus.DUPLICATE );
+end
+
+/*
+    When there are 2 transfers from the same account within 1 day of each other the second transaction
+    should be marked as suspicious
+*/
+rule "Flag Suspicious Transfers"
+    no-loop
+    when
+        $t1 : Transaction( $fromAccount : fromAccount )  from entry-point Transfers
+        $t2 : Transaction( this != $t1, fromAccount == $fromAccount, this after [15s, 1d] $t1 )  
+            from entry-point Transfers
+    then
+        $t2.setStatus( TransactionStatus.SUSPICIOUS );
+end

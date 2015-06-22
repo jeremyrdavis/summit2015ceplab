@@ -1,0 +1,37 @@
+package com.redhat.summit2015.ceplab
+
+import java.math.BigDecimal;
+
+import com.redhat.summit2015.ceplab.model.Account;
+import com.redhat.summit2015.ceplab.model.AccountStatus;
+import com.redhat.summit2015.ceplab.model.Transaction;
+
+declare Transaction
+    @role(event)
+end
+
+declare AccountInfo
+    @propertyReactive
+    id : String
+    averageBalance : BigDecimal
+    averageAmount : BigDecimal
+    averageNumberOfTransactions : BigDecimal
+    numberOfTransactions1Day : Long
+end
+
+/*
+    Block and Account when there are 3 consecutive withdrawls that total more than the average monthly 
+    balance of that account
+*/
+rule "3 withdrawls within 3 minutes that total over monthly average balance block Account" 
+    when
+        $a : Account( $id : id, status != AccountStatus.BLOCKED)
+        $t1 : Transaction( fromAccount == $a ) from entry-point "Withdrawls"
+        $t2 : Transaction( this != $t1, fromAccount == $a, this after [0, 3m] $t1 ) from entry-point "Withdrawls"
+        $t3 : Transaction( this != $t1, this != $t2, fromAccount == $a, this after [0, 3m] $t2 ) from entry-point "Withdrawls"
+        AccountInfo(id == $id,  $t1.amount + $t2.amount + $t3.amount > (averageBalance * BigDecimal.valueOf(0.9)))
+    then
+        modify($a){
+            setStatus( AccountStatus.BLOCKED );
+        }
+end
