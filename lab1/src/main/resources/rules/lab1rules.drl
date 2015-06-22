@@ -17,14 +17,3 @@ rule "Zero Balance"
         update( $account );
 end
 
-/*
-    When there is an Account with a balance between $1 and $100 set the status to AccountStatus.BLOCKED
-*/
-rule "Block Accounts with $100 or under balance"
-    when
-        $account : Account( status != AccountStatus.BLOCKED && (balance >= BigDecimal.ONE && balance <= BigDecimal.valueOf(100)) )
-    then
-        System.out.println("blocking account " + $account);
-        $account.setStatus( AccountStatus.BLOCKED );
-        update( $account );
-end
