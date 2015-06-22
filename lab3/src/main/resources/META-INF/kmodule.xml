@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
-    <kbase name="kbase1" eventProcessingMode="stream" packages="rules" default="true">
-        <ksession name="ksession1" type="stateful" clockType="pseudo" default="true">
-            <fileLogger file="lab3" threaded="true" interval="10" />
-        </ksession>
-    </kbase>
-</kmodule>
