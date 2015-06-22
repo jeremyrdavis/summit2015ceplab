@@ -2,7 +2,7 @@
 .metadata/
 
 # Idea stuff
-.idea
+#.idea
 
 # Maven stuff
 **target/
@@ -11,9 +11,9 @@
 RemoteSystemsTempFiles/
 
 # Project specific stuff
-summit2015/
+#summit2015/
 cep_lab/
-ceplab/
+#ceplab/
 drools-example/
 drools64project/
 jboss-kitchensink-rf/
