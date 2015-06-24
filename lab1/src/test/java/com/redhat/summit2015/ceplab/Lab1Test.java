@@ -38,6 +38,7 @@ public class Lab1Test extends TestCase {
         Account fullAccount = new Account(AccountStatus.ACTIVE, BigDecimal.valueOf(200));
         
         kieSession.insert(emptyAccount);
+        kieSession.insert(fullAccount);
         kieSession.fireAllRules();
         assertSame("emptyAccount should be blocked", emptyAccount.getStatus(), AccountStatus.TERMINATED);
         assertSame("fullAccount should be active", fullAccount.getStatus(), AccountStatus.ACTIVE);

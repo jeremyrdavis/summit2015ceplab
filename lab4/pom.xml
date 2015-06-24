@@ -12,6 +12,7 @@
 
 	<properties>
 		<brms-version>6.2.0.Final-redhat-4</brms-version>
+		<slf4j-version>1.7.2.redhat-3</slf4j-version>
 	</properties>
 
 	<dependencies>
@@ -41,6 +42,12 @@
 			<version>4.11</version>
 		</dependency>
 		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${slf4j-version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.6.0.redhat-4</version>
@@ -52,8 +59,8 @@
 		</dependency>
 		<dependency>
 			<groupId>com.redhat.summit2015.ceplab</groupId>
-	        <artifactId>ceplab-tests</artifactId>
-	        <version>[0.0.1-SNAPSHOT,)</version>
-	    </dependency>
-  </dependencies>
+			<artifactId>ceplab-tests</artifactId>
+			<version>[0.0.1-SNAPSHOT,)</version>
+		</dependency>
+	</dependencies>
 </project>

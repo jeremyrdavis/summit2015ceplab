@@ -45,7 +45,7 @@ public class Transaction {
 				.append("status", status).toString();
 	}
 	//--------------------------------------------------------------------------
-	//	generated getters and setters
+	//	generated methods
 	//--------------------------------------------------------------------------
 	@Override
 	public int hashCode() {

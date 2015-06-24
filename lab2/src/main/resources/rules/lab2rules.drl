@@ -24,16 +24,3 @@ rule "Flag Duplicate Transfers"
         $t2.setStatus( TransactionStatus.DUPLICATE );
 end
 
-/*
-    When there are 2 transfers from the same account within 1 day of each other the second transaction
-    should be marked as suspicious
-*/
-rule "Flag Suspicious Transfers"
-    no-loop
-    when
-        $t1 : Transaction( $fromAccount : fromAccount )  from entry-point Transfers
-        $t2 : Transaction( this != $t1, fromAccount == $fromAccount, this after [15s, 1d] $t1 )  
-            from entry-point Transfers
-    then
-        $t2.setStatus( TransactionStatus.SUSPICIOUS );
-end
